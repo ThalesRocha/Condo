@@ -23,3 +23,15 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### Eclipse ###
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
