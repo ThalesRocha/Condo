@@ -18,6 +18,7 @@ public class UserBookService {
     @Autowired
     private Users users;
 
-    public boolean bookArea(User user, BookableAreas bookable
+    public void bookArea(Date date, BookableArea bookableArea, User user) {
+
     }
 }

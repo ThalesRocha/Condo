@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import br.com.haka.domain.valueObject.BookableAreas;
+
+import br.com.haka.domain.entity.BookableArea;
+import br.com.haka.domain.entity.User;
+import br.com.haka.domain.repository.PublicAreas;
 import br.com.haka.domain.repository.Users;
-import br.com.haka.domain.service.UserBookService;
+import br.com.haka.domain.service.ApartmentManagerService;
 
 /**
  * Created with IntelliJ IDEA.
@@ -28,6 +32,9 @@ public class LockUnlockUserTests {
     @Autowired
     private Users users;
 
+    @Autowired
+    private BookableArea bookableArea;
+
     User userTest = apartmentManagerService.createUser("theBadOne@deathstar.com", "Emperor Palpatine", "123", true);
 
     @Test //Eu como síndico devo ser capaz de bloquear um condômino para que ele não possa utilizar áreas de reserva
@@ -39,24 +46,21 @@ public class LockUnlockUserTests {
         Assert.assertFalse(userTest.getUnlocked());
 
         //busco o usuário bloqueado e ele não pode reservar
-        Assert.assertFalse(userTest.bookArea(BookableAreas.CHURRASQUEIRA));
+        Assert.assertFalse(userTest.bookPublicArea(PublicAreas.CHURRASQUEIRA));
     }
 
     @Test //Eu como síndico devo ser capaz de desbloquear um condômino para que ele possa voltar a utilizar áreas de reserva
     public void testUnlockUser(){
 
-        //Manda desbloquear um usuário que não existe
-        Boolean unlocked = apartamentManagerService.unlockUser("obiwanKenobi1977@tatooine.com");
-        Assert.assertNull(userTest.getUnlocked());
-
         //Manda desbloquear um usuário que existe
-        unlocked = apartamentManagerService.unlockUser("theBadOne@deathstar.com");
+        Boolean unlocked = apartmentManagerService.unlockUser(userTest);
         Assert.assertNotNull(userTest.getUnlocked());
 
         //Desbloqueio com sucesso
         Assert.assertTrue(userTest.getUnlocked());
 
         //busco o usuário desbloqueado e ele pode reservar
-        Assert.assertTrue(userTest.bookArea(BookableAreas.CHURRASQUEIRA));
+        //Assert.assertTrue();
+        //TODO
     }
 }
