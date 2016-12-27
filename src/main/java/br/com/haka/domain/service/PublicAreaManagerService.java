@@ -16,15 +16,15 @@ import java.util.Date;
  */
 
 @Service
-public class PublicAreaManagerService {
+public class ManagerService {
 
     @Autowired
-    private UserRegistorService userRegistorService;
+    private UserRegisterService userRegisterService;
 
     @Autowired
     private Users users;
 
-    public boolean book(Date date, PublicAreas publicArea, User user) {
+    public boolean book(Date date, BookableAreas bookableArea, User user) {
         //
         ApartmentManager apartmentManager = apartmentManagers.findByToken(apartmentManagerToken);
         //criar uma meeting
@@ -32,11 +32,11 @@ public class PublicAreaManagerService {
     }
 
     public boolean removeUser(String apartmentManagerToken, String user) {
-        return userRegistorService.remove(user);
+        return userRegisterService.remove(user);
     }
 
     public User createUser(String login, String pass, String name, Boolean unlocked) {
-        return userRegistorService.create(login, pass, name, unlocked);
+        return userRegisterService.create(login, pass, name, unlocked);
     }
 
     public boolean lockUser(User user) {

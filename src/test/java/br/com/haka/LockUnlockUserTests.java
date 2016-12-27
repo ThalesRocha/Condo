@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import br.com.haka.domain.valueObject.PublicAreas;
+import br.com.haka.domain.valueObject.BookableAreas;
 import br.com.haka.domain.repository.Users;
 import br.com.haka.domain.service.UserBookService;
 
@@ -39,7 +39,7 @@ public class LockUnlockUserTests {
         Assert.assertFalse(userTest.getUnlocked());
 
         //busco o usuário bloqueado e ele não pode reservar
-        Assert.assertFalse(userTest.bookPublicArea(PublicAreas.CHURRASQUEIRA));
+        Assert.assertFalse(userTest.bookArea(BookableAreas.CHURRASQUEIRA));
     }
 
     @Test //Eu como síndico devo ser capaz de desbloquear um condômino para que ele possa voltar a utilizar áreas de reserva
@@ -57,6 +57,6 @@ public class LockUnlockUserTests {
         Assert.assertTrue(userTest.getUnlocked());
 
         //busco o usuário desbloqueado e ele pode reservar
-        Assert.assertTrue(userTest.bookPublicArea(PublicAreas.CHURRASQUEIRA));
+        Assert.assertTrue(userTest.bookArea(BookableAreas.CHURRASQUEIRA));
     }
 }

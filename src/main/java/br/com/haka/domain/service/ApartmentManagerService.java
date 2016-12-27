@@ -29,7 +29,7 @@ public class ApartmentManagerService {
     private MeetingService meetingService;
 
     @Autowired
-    private UserRegistorService userRegistorService;
+    private UserRegisterService userRegisterService;
 
     @Autowired
     private UserLockerService userLockerService;
@@ -45,11 +45,11 @@ public class ApartmentManagerService {
     }
 
     public boolean removeUser(String apartmentManagerToken, String user) {
-        return userRegistorService.remove(user);
+        return userRegisterService.remove(user);
     }
 
     public User createUser(String login, String pass, String name, Boolean unlocked) {
-        return userRegistorService.create(login, pass, name, unlocked);
+        return userRegisterService.create(login, pass, name, unlocked);
     }
 
     public boolean lockUser(User user) {

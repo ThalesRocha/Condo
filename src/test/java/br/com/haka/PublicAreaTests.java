@@ -2,7 +2,7 @@ package br.com.haka;
 
 import br.com.haka.domain.entity.User;
 import br.com.haka.domain.service.ApartmentManagerService;
-import br.com.haka.domain.valueObject.PublicAreas;
+import br.com.haka.domain.valueObject.BookableAreas;
 import br.com.haka.domain.repository.Users;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,7 +20,7 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PublicAreaTests {
+public class BookableAreaTests {
 
     @Autowired
     private ApartmentManagerService apartmentManagerService;
@@ -29,14 +29,14 @@ public class PublicAreaTests {
     private Users users;
 
     @Autowired
-    private PublicAreas publicArea;
+    private BookableAreas bookableAreas;
 
     User userTest = apartmentManagerService.createUser("theBadOne@deathstar.com", "Emperor Palpatine", "123", true);
-    publicArea = publicAreaManagerService.createPublicArea(publicArea.CHURRASQUEIRA);
+    bookableArea = bookableAreaManagerService.createBookableArea(bookableArea.CHURRASQUEIRA);
 
     @Test //Eu como condômino deve ser capaz de reservar áreas comuns
-    public void testBookPublicArea(Date date, PublicAreas publicArea, User userTest) {
-        Boolean booked = publicAreaManagerService.book(publicArea);
+    public void testbookArea(Date date, BookableAreas bookableArea, User userTest) {
+        Boolean booked = BookableAreaManagerService.book(bookableArea);
         Assert.assertNotNull(booked);
         Assert.assertTrue(booked);
     }

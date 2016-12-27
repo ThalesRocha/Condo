@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * Responsabilidade:
  */
 @Service
-public class UserRegistorService {
+public class UserRegisterService {
 
     @Autowired
     private Users users;
