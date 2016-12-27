@@ -9,57 +9,65 @@ import java.util.List;
 /**
  * Created with IntelliJ IDEA.
  * <p/>
- * User: Tiago Magalhães
- * Date: 12/15/16
- * Time: 11:02 PM
+ * User: Tiago Magalhães Date: 12/15/16 Time: 11:02 PM
  * <p/>
  * Responsabilidade:
  */
 
-
 @Repository
 public class Users {
 
-    private List<User> users;
+	private List<User> users;
 
-    public Users() {
-        this.users = new ArrayList<User>();
-    }
+	public Users() {
+		this.users = new ArrayList<User>();
+	}
 
-    public boolean add(User user){
-        return this.users.add(user);
-    }
+	public boolean add(User user) {
+		return this.users.add(user);
+	}
 
-    public boolean remove(User user){
-        if ( users.contains(user) )
-            return this.users.remove(user);
+	public boolean remove(User user) {
+		if (users.contains(user))
+			return this.users.remove(user);
 
-        return false;
-    }
+		return false;
+	}
 
-    public List<User> getUsers() {
-        return this.users;
-    }
+	public List<User> getUsers() {
+		return this.users;
+	}
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
-    //TODO - tratar exceção
-    public User findByLogin(String login) {
-        if(login != null) {
-            for (User user : this.users) {
-                if (user.getLogin().equals(login))
-                    return user;
-            }
+	// TODO - tratar exceção
+	public User findByLogin(String login) {
+		if (login != null) {
+			for (User user : this.users) {
+				if (user.getLogin().equals(login))
+					return user;
+			}
+		}
+		return null;
+	}
+
+	public boolean lockUser(User user){		
+		try{
+        	user.setUnlocked(false);
+        	return true;
+        }catch (Exception e){
+        	return false;
         }
-        return null;
     }
 
-    public void lockUser(User user){
-        user.setUnlocked(false);
-    }
-    public void unlockUser(User user){
-        user.setUnlocked(true);
+	public boolean unlockUser(User user){
+        try{
+        	user.setUnlocked(true);
+        	return true;
+        } catch (Exception e){
+        	return false;
+        }
     }
 }

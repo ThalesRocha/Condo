@@ -17,13 +17,13 @@ public class UserLockerService {
     @Autowired
     private Users users;
 
-    public void lock(String login) {
+    public boolean lock(String login) {
         User user = users.findByLogin(login);
-        users.lockUser(user);
+        return users.lockUser(user);
     }
 
-    public void unlock(String login) {
+    public boolean unlock(String login) {
         User user = users.findByLogin(login);
-        users.unlockUser(user);
+        return users.unlockUser(user);
     }
 }

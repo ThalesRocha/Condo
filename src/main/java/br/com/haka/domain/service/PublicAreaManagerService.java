@@ -1,13 +1,13 @@
 package br.com.haka.domain.service;
 
-import br.com.haka.domain.entity.ApartmentManager;
-import br.com.haka.domain.entity.User;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.haka.domain.repository.Users;
-import br.com.haka.domain.valueObject.*;
 
-import java.util.Date;
+import br.com.haka.domain.entity.BookableArea;
+import br.com.haka.domain.entity.User;
+import br.com.haka.domain.repository.Users;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,12 +23,12 @@ public class PublicAreaManagerService {
 
     @Autowired
     private Users users;
-
-    public boolean book(Date date, PublicAreas publicArea, User user) {
-        //
-        ApartmentManager apartmentManager = apartmentManagers.findByToken(apartmentManagerToken);
-        //criar uma meeting
-        return meetingService.createMeeting(apartmentManager, date, local, subject);
+    
+    @Autowired
+    UserLockerService userLockerService;
+    
+    public boolean book(Date date, BookableArea bookableArea, User user) {
+        return false;
     }
 
     public boolean removeUser(String apartmentManagerToken, String user) {
@@ -40,10 +40,10 @@ public class PublicAreaManagerService {
     }
 
     public boolean lockUser(User user) {
-        return UserLockerService.lock(user.getLogin());
+        return userLockerService.lock(user.getLogin());
     }
 
     public boolean unlockUser(User user) {
-        return UserLockerService.unlock(user.getLogin());
+        return userLockerService.unlock(user.getLogin());
     }
 }

@@ -1,10 +1,13 @@
 package br.com.haka.domain.service;
 
-import br.com.haka.domain.entity.User;
-import br.com.haka.domain.repository.Users;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.haka.domain.valueObject.*;
+
+import br.com.haka.domain.entity.BookableArea;
+import br.com.haka.domain.entity.User;
+import br.com.haka.domain.repository.Users;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +21,7 @@ public class UserBookService {
     @Autowired
     private Users users;
 
-    public boolean bookPublicArea(User user, PublicAreas publicArea) {
-        return user.setUnlocked(false);
+    public void bookPublicArea(Date date, BookableArea bookableArea, User user) {
+        
     }
 }
