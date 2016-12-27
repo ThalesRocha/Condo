@@ -10,6 +10,8 @@ package br.com.haka.domain.repository;
  * User: Gustavo Daneluti
  * Date: 27 de dez de 2016
  */
+
 public class PublicAreas {
 
+	 
 }
