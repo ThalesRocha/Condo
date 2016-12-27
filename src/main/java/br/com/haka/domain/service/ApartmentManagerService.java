@@ -32,6 +32,9 @@ public class ApartmentManagerService {
     private UserRegistorService userRegistorService;
 
     @Autowired
+    private UserLockerService userLockerService;
+
+    @Autowired
     private Users users;
 
     public boolean scheduleMeeting(ApartmentManagerToken apartmentManagerToken, Date date, String local, String subject) {
@@ -50,10 +53,10 @@ public class ApartmentManagerService {
     }
 
     public boolean lockUser(User user) {
-        return UserLockerService.lock(user.getLogin());
+        return userLockerService.lock(user.getLogin());
     }
 
     public boolean unlockUser(User user) {
-        return UserLockerService.unlock(user.getLogin());
+        return userLockerService.unlock(user.getLogin());
     }
 }

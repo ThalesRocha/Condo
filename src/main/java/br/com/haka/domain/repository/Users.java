@@ -2,6 +2,7 @@ package br.com.haka.domain.repository;
 
 import br.com.haka.domain.entity.User;
 import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import java.util.List;
  * <p/>
  * Responsabilidade:
  */
+
+
 @Repository
 public class Users {
 
@@ -42,11 +45,21 @@ public class Users {
         this.users = users;
     }
 
+    //TODO - tratar exceção
     public User findByLogin(String login) {
-        for (User user:this.users){
-            if( user!=null && login!=null && user.getLogin().equals(login))
-                return user;
+        if(login != null) {
+            for (User user : this.users) {
+                if (user.getLogin().equals(login))
+                    return user;
+            }
         }
         return null;
+    }
+
+    public void lockUser(User user){
+        user.setUnlocked(false);
+    }
+    public void unlockUser(User user){
+        user.setUnlocked(true);
     }
 }

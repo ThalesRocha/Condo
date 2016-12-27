@@ -1,15 +1,16 @@
 package br.com.haka;
 
-import java.br.com.haka.domain.entity.User;
-import java.br.com.haka.domain.service.ApartmentManagerService;
+import br.com.haka.domain.entity.User;
+import br.com.haka.domain.service.ApartmentManagerService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.br.com.haka.domain.valueObject.PublicAreas;
+import br.com.haka.domain.valueObject.PublicAreas;
+import br.com.haka.domain.repository.Users;
+import br.com.haka.domain.service.UserBookService;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,20 +28,14 @@ public class LockUnlockUserTests {
     @Autowired
     private Users users;
 
-    User userTest = apartmentManagerService.createUser("Emperor Palpatine", "theBadOne@deathstar.com", "123");
+    User userTest = apartmentManagerService.createUser("theBadOne@deathstar.com", "Emperor Palpatine", "123", true);
 
     @Test //Eu como síndico devo ser capaz de bloquear um condômino para que ele não possa utilizar áreas de reserva
     public void testeLockUser(){
 
-        //Manda bloquear um usuário que não existe pelo identificar login
-        Boolean unlocked = ApartamentManagerService.lockUser("obiwanKenobi1977@tatooine.com");
-        Assert.assertNull(user.getUnlocked());
 
-        //Manda bloquear um usuário que existe pelo identificar login
-        unlocked = ApartamentManagerService.lockUser("theBadOne@deathstar.com");
-        Assert.assertNotNull(userTest.getUnlocked());
-
-        //Bloqueio com sucesso
+        //Bloqueia um usuário
+        Boolean unlocked = apartmentManagerService.lockUser(userTest);
         Assert.assertFalse(userTest.getUnlocked());
 
         //busco o usuário bloqueado e ele não pode reservar
@@ -51,11 +46,11 @@ public class LockUnlockUserTests {
     public void testUnlockUser(){
 
         //Manda desbloquear um usuário que não existe
-        Boolean unlocked = ApartamentManagerService.unlockUser("obiwanKenobi1977@tatooine.com");
+        Boolean unlocked = apartamentManagerService.unlockUser("obiwanKenobi1977@tatooine.com");
         Assert.assertNull(userTest.getUnlocked());
 
         //Manda desbloquear um usuário que existe
-        unlocked = ApartamentManagerService.unlockUser("theBadOne@deathstar.com");
+        unlocked = apartamentManagerService.unlockUser("theBadOne@deathstar.com");
         Assert.assertNotNull(userTest.getUnlocked());
 
         //Desbloqueio com sucesso
@@ -65,4 +60,3 @@ public class LockUnlockUserTests {
         Assert.assertTrue(userTest.bookPublicArea(PublicAreas.CHURRASQUEIRA));
     }
 }
-

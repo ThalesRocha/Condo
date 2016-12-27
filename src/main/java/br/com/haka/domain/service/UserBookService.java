@@ -18,8 +18,7 @@ public class UserBookService {
     @Autowired
     private Users users;
 
-    public boolean book(User user, PublicAreas publicArea) {
-
+    public boolean bookPublicArea(User user, PublicAreas publicArea) {
         return user.setUnlocked(false);
     }
 }
