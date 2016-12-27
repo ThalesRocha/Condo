@@ -1,14 +1,15 @@
 package br.com.haka;
 
-import java.br.com.haka.domain.entity.User;
-import java.br.com.haka.domain.repository.Users;
-import java.br.com.haka.domain.service.ApartmentManagerService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import br.com.haka.domain.entity.User;
+import br.com.haka.domain.repository.Users;
+import br.com.haka.domain.service.ApartmentManagerService;
 
 
 @RunWith(SpringRunner.class)
@@ -29,7 +30,7 @@ public class ApartmentManagerTests {
         Assert.assertFalse(removed);
 
         //cria um novo usuario
-        User user = apartmentManagerService.createUser("usuario@email.com.br", "123", "chico_serra");
+        User user = apartmentManagerService.createUser("usuario@email.com.br", "123", "chico_serra", false);
         Assert.assertNotNull(user);
 
         //buscar no repositorio para validar a persistencia
