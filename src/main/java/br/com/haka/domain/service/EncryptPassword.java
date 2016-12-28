@@ -8,11 +8,11 @@ import java.security.NoSuchAlgorithmException;
  */
 public class EncryptPassword {
 
-    public String EncryptPassword (String senha){
+    public String EncryptPassword (String pasword){
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
 
-            messageDigest.update(senha.getBytes());
+            messageDigest.update(pasword.getBytes());
 
             byte byteData[] = messageDigest.digest();
 
@@ -20,11 +20,11 @@ public class EncryptPassword {
             for (int i =0; i < byteData.length; i++){
                 stringBuffer.append(Integer.toString((byteData[i] & 0xff)+ 0x100, 16).substring(1));
             }
-           senha = stringBuffer.toString();
+           pasword = stringBuffer.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
 
-        return senha;
+        return pasword;
     }
 }

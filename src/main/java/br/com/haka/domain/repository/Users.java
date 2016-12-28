@@ -42,7 +42,7 @@ public class Users {
 		this.users = users;
 	}
 
-	// TODO - tratar exceção
+	// TODO - The treatment of exception
 	public User findByLogin(String login) {
 		if (login != null) {
 			for (User user : this.users) {

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.haka.domain.valueObject.*;
 
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Guilherme Bury
@@ -18,7 +20,8 @@ public class UserBookService {
     @Autowired
     private Users users;
 
-    public void bookArea(Date date, BookableArea bookableArea, User user) {
+    public void bookArea(Date date, BookableAreas bookableArea, User user) {
+
 
     }
 }

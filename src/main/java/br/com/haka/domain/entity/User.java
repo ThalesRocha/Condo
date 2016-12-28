@@ -1,5 +1,8 @@
 package br.com.haka.domain.entity;
 
+import br.com.haka.domain.service.EncryptPassword;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * Created with IntelliJ IDEA.
  * <p/>
@@ -11,21 +14,24 @@ package br.com.haka.domain.entity;
  */
 public class User {
 
+    @Autowired
+    private EncryptPassword encryptPassword;
+
     private String name;
     private String login;
-    private String pass;
+    private String pasword;
     //A unlocked user is a user that can book public areas
     private Boolean unlocked;
 
-    private User(String name, String login, String pass, Boolean unlocked) {
+    private User(String name, String login, String pasword, Boolean unlocked) {
         this.name = name;
         this.login = login;
-        this.pass = pass;
+        this.pasword = encryptPassword.EncryptPassword(pasword);
         this.unlocked = unlocked;
     }
 
-    public static User createUser(String name, String login, String pass, Boolean unlocked) {
-        return new User(name, login, pass, unlocked);
+    public static User createUser(String name, String login, String pasword, Boolean unlocked) {
+        return new User(name, login, pasword, unlocked);
     }
 
 
@@ -45,12 +51,12 @@ public class User {
         this.login = login;
     }
 
-    public String getPass() {
-        return this.pass;
+    public String getpasword() {
+        return this.pasword;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setpasword(String pasword) {
+        this.pasword = pasword;
     }
 
     public Boolean getUnlocked() { return unlocked; }
@@ -66,7 +72,7 @@ public class User {
 
         if (!login.equals(user.login)) return false;
         if (!name.equals(user.name)) return false;
-        if (!pass.equals(user.pass)) return false;
+        if (!pasword.equals(user.pasword)) return false;
         if (!unlocked.equals(user.unlocked)) return false;
 
         return true;
@@ -76,7 +82,7 @@ public class User {
     public int hashCode() {
         int result = name.hashCode();
         result = 31 * result + login.hashCode();
-        result = 31 * result + pass.hashCode();
+        result = 31 * result + pasword.hashCode();
         return result;
     }
 }
