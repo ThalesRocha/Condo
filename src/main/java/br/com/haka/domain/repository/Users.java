@@ -58,7 +58,8 @@ public class Users {
         	user.setUnlocked(false);
         	return true;
         }catch (Exception e){
-        	return false;
+        	e.printStackTrace();
+			return false;
         }
     }
 
@@ -67,7 +68,8 @@ public class Users {
         	user.setUnlocked(true);
         	return true;
         } catch (Exception e){
-        	return false;
+			e.printStackTrace();
+			return false;
         }
     }
 }

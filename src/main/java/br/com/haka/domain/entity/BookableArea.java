@@ -13,7 +13,7 @@ package br.com.haka.domain.entity;
 public class BookableArea {
 
 	private String name;
-	private Integer Capacity;
+	private Integer capacity;
 	private boolean booked;
 	
 	
@@ -26,11 +26,11 @@ public class BookableArea {
 	}
 	
 	public Integer getCapacity() {
-		return Capacity;
+		return capacity;
 	}
 	
 	public void setCapacity(Integer capacity) {
-		Capacity = capacity;
+		this.capacity = capacity;
 	}
 	
 	public boolean isBooked() {
