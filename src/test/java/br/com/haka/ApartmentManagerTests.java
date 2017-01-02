@@ -12,6 +12,7 @@ import br.com.haka.domain.repository.Users;
 import br.com.haka.domain.service.ApartmentManagerService;
 
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ApartmentManagerTests {
@@ -21,6 +22,9 @@ public class ApartmentManagerTests {
 
     @Autowired
     private ApartmentManagerService apartmentManagerService;
+
+
+
 
     @Test //Eu como síndico devo ser capaz de remover usuários
     public void testeRemoverUsuario(){
@@ -46,4 +50,6 @@ public class ApartmentManagerTests {
         user = users.findByLogin(user.getLogin());
         Assert.assertNull(user);
     }
+
+
 }

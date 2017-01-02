@@ -1,8 +1,5 @@
 package br.com.haka.domain.entity;
 
-import br.com.haka.domain.service.EncryptPassword;
-import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  * Created with IntelliJ IDEA.
  * <p/>
@@ -12,23 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
  * <p/>
  * Responsabilidade:
  */
+
 public class User {
 
-    @Autowired
-    private EncryptPassword encryptPassword;
+
 
     private String name;
     private String login;
     private String pasword;
-    //A unlocked user is a user that can book public areas
     private Boolean unlocked;
 
     private User(String name, String login, String pasword, Boolean unlocked) {
         this.name = name;
         this.login = login;
-        this.pasword = encryptPassword.EncryptPassword(pasword);
+        this.pasword = pasword;
         this.unlocked = unlocked;
+
     }
+
 
     public static User createUser(String name, String login, String pasword, Boolean unlocked) {
         return new User(name, login, pasword, unlocked);

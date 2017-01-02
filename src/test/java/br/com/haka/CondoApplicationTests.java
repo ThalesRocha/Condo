@@ -1,7 +1,9 @@
 package br.com.haka;
 
+import br.com.haka.domain.entity.ApartmentManager;
 import br.com.haka.domain.entity.ApartmentManagerToken;
 import br.com.haka.domain.repository.Meetings;
+import br.com.haka.domain.service.ApartmentManagerRegisterService;
 import br.com.haka.domain.service.ApartmentManagerService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,6 +28,9 @@ public class CondoApplicationTests {
 
     private ApartmentManagerToken apartmentManager;
 
+
+    private ApartmentManagerRegisterService createApartmentManager;
+
     @Autowired
     private Meetings meetings;
 
@@ -40,6 +45,7 @@ public class CondoApplicationTests {
 	@Test
 	public void agendarAssembleia() {
         apartmentManager = ApartmentManagerToken.createApartmentManager("usuario", "senha");
+        createApartmentManager.create(apartmentManager, "test");
         Assert.assertNotNull(apartmentManager);
         //sindico -> agendar assembleias
         String tema = "Tema para Teste APENAS!!";
@@ -47,7 +53,7 @@ public class CondoApplicationTests {
         Date data = Calendar.getInstance().getTime(); // fazer estudo sobre a diferença de date e calendar
         Assert.assertNotNull(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
         Assert.assertTrue(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
-        Assert.assertFalse(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
+       // Assert.assertFalse(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
 
         // Validação das Rotas
         //String pathPararedirecionamento = servicoDeSindicos.agendarAssembleia(sindico, data, local, tema);

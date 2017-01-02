@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public class ApartmentManagers {
 
-    List<ApartmentManager> apartmentManagers;
+    static List<ApartmentManager> apartmentManagers;
 
     public ApartmentManagers() {
         this.apartmentManagers = new ArrayList<ApartmentManager>();
@@ -36,4 +36,10 @@ public class ApartmentManagers {
 
           return null;
     }
+
+    public boolean add(ApartmentManager apartmentManager) {
+        return this.apartmentManagers.add(apartmentManager);
+    }
+
+
 }

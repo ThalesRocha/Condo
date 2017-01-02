@@ -37,6 +37,8 @@ public class ApartmentManagerService {
     @Autowired
     private Users users;
 
+
+
     public boolean scheduleMeeting(ApartmentManagerToken apartmentManagerToken, Date date, String local, String subject) {
         // verificar se o sindico é sindico mesmo
         ApartmentManager apartmentManager = apartmentManagers.findByToken(apartmentManagerToken);

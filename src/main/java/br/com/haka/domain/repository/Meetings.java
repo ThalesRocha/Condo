@@ -1,6 +1,7 @@
 package br.com.haka.domain.repository;
 
 import br.com.haka.domain.entity.ApartmentManager;
+import br.com.haka.domain.entity.ApartmentManagerToken;
 import br.com.haka.domain.entity.Meeting;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class Meetings {
     }
 
     public boolean create(ApartmentManager apartmentManager, Date date, String local, String subject) {
-        if ( apartmentManager == null || date == null || local == null || subject == null ) return false;
+        if ( apartmentManager == null || date == null || local == null || subject == null )
+            return false;
 
         Meeting meeting = new Meeting();
         return meetings.add(meeting);

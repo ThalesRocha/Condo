@@ -42,7 +42,7 @@ public class BookableAreaTests {
     //bookableArea = publicAreaManagerService.createPublicArea(publicArea.CHURRASQUEIRA);
 
     @Test //Eu como condômino deve ser capaz de reservar áreas comuns
-    public void testBookPublicArea(Date date, PublicAreas publicArea, User userTest) {
+    public void testBookPublicArea(Date date, BookableArea bookableArea, User userTest) {
 //        Boolean booked = publicAreaManagerService.book(publicArea);
 //        Assert.assertNotNull(booked);
 //        Assert.assertTrue(booked);

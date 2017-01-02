@@ -1,6 +1,7 @@
 package br.com.haka.domain.service;
 
 import br.com.haka.domain.entity.ApartmentManager;
+import br.com.haka.domain.entity.ApartmentManagerToken;
 import br.com.haka.domain.repository.Meetings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

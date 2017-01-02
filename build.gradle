@@ -35,4 +35,5 @@ dependencies {
 	compile('org.projectlombok:lombok:1.16.12')
 	compile('com.h2database:h2:1.4.193')
 	compile('org.springframework.security:spring-security-core:4.2.0.RELEASE')
+	compile('junit:junit-dep:4.11')
 }

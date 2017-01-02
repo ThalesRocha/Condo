@@ -1,5 +1,8 @@
 package br.com.haka.domain.entity;
 
+import br.com.haka.domain.repository.ApartmentManagers;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * Created with IntelliJ IDEA.
  * <p/>
@@ -14,11 +17,15 @@ public class ApartmentManager {
     private String name;
     private ApartmentManagerToken token;
 
-    private ApartmentManager() {
+
+
+    private ApartmentManager(ApartmentManagerToken token, String name) {
+        this.token = token;
+        this.name = name;
     }
 
-    public static ApartmentManager createApartmentManager() {
-        return new ApartmentManager();
+    public static ApartmentManager createApartmentManager(ApartmentManagerToken token, String name) {
+        return new ApartmentManager(token,name);
     }
 
     public String getName() {
@@ -45,4 +52,6 @@ public class ApartmentManager {
 
         return super.equals(obj);
     }
+
+
 }
