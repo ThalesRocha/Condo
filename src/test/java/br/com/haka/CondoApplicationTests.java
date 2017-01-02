@@ -1,6 +1,5 @@
 package br.com.haka;
 
-import br.com.haka.domain.entity.ApartmentManager;
 import br.com.haka.domain.entity.ApartmentManagerToken;
 import br.com.haka.domain.repository.Meetings;
 import br.com.haka.domain.service.ApartmentManagerRegisterService;
@@ -12,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Calendar;
 import java.util.Date;
-
+import java.util.Calendar;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

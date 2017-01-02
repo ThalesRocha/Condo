@@ -17,57 +17,59 @@ import java.util.List;
 @Repository
 public class Users {
 
-    private List<User> users;
+	private List<User> users;
 
-    public Users() {
-        this.users = new ArrayList<User>();
-    }
+	public Users() {
+		this.users = new ArrayList<User>();
+	}
 
-    public boolean add(User user) {
-        return this.users.add(user);
-    }
+	public boolean add(User user) {
+		return this.users.add(user);
+	}
 
-    public boolean remove(User user) {
-        if (users.contains(user))
-            return this.users.remove(user);
+	public boolean remove(User user) {
+		if (users.contains(user))
+			return this.users.remove(user);
 
-        return false;
-    }
+		return false;
+	}
 
-    public List<User> getUsers() {
-        return this.users;
-    }
+	public List<User> getUsers() {
+		return this.users;
+	}
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
-    // TODO - The treatment of exception
-    public User findByLogin(String login) {
-        if (login != null) {
-            for (User user : this.users) {
-                if (user.getLogin().equals(login))
-                    return user;
-            }
+	// TODO - tratar exceção
+	public User findByLogin(String login) {
+		if (login != null) {
+			for (User user : this.users) {
+				if (user.getLogin().equals(login))
+					return user;
+			}
+		}
+		return null;
+	}
+
+	public boolean lockUser(User user){		
+		try{
+        	user.setUnlocked(false);
+        	return true;
+        }catch (Exception e){
+        	e.printStackTrace();
+			return false;
         }
-        return null;
     }
 
-    public boolean lockUser(User user) {
-        try {
-            user.setUnlocked(false);
-            return user.getUnlocked();
-        } catch (Exception e) {
-            return user.getUnlocked();
-        }
-    }
-
-    public boolean unlockUser(User user) {
-        try {
-            user.setUnlocked(true);
-            return true;
-        } catch (Exception e) {
-            return false;
+	public boolean unlockUser(User user){
+        try{
+        	user.setUnlocked(true);
+        	return true;
+        } catch (Exception e){
+			e.printStackTrace();
+			return false;
         }
     }
 }

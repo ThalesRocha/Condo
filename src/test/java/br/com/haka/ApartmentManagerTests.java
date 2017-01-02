@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import br.com.haka.domain.entity.User;
 import br.com.haka.domain.repository.Users;
 import br.com.haka.domain.service.ApartmentManagerService;

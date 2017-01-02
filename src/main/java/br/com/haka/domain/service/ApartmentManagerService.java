@@ -1,6 +1,5 @@
 package br.com.haka.domain.service;
 
-import br.com.haka.domain.repository.Users;
 import br.com.haka.domain.entity.ApartmentManager;
 import br.com.haka.domain.entity.ApartmentManagerToken;
 import br.com.haka.domain.entity.User;
@@ -34,13 +33,13 @@ public class ApartmentManagerService {
     @Autowired
     private UserLockerService userLockerService;
 
-    @Autowired
-    private Users users;
+
+    private User user;
 
 
 
     public boolean scheduleMeeting(ApartmentManagerToken apartmentManagerToken, Date date, String local, String subject) {
-        // verificar se o sindico é sindico mesmo
+        // verificar se o síndico é síndico mesmo
         ApartmentManager apartmentManager = apartmentManagers.findByToken(apartmentManagerToken);
         //criar uma meeting
         return meetingService.createMeeting(apartmentManager, date, local, subject);
