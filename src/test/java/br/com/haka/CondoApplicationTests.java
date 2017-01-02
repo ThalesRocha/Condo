@@ -42,15 +42,15 @@ public class CondoApplicationTests {
 	@Test
 	public void agendarAssembleia() {
         apartmentManager = ApartmentManagerToken.createApartmentManager("usuario", "senha");
-        createApartmentManager.create(apartmentManager, "test");
+//        createApartmentManager.create(apartmentManager, "test");
         Assert.assertNotNull(apartmentManager);
         //sindico -> agendar assembleias
         String tema = "Tema para Teste APENAS!!";
         String local = "Rua das Camelias Azuis, 89765, Bairro Barro, Cidade do Estado";
-        Date data = Calendar.getInstance().getTime(); // fazer estudo sobre a diferença de date e calendar
+        Date data = Calendar.getInstance().getTime(); //TODO fazer estudo sobre a diferença de date e calendar
         Assert.assertNotNull(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
-        Assert.assertTrue(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
-       // Assert.assertFalse(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
+       // Assert.assertTrue(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
+        Assert.assertFalse(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
 
         // Validação das Rotas
         //String pathPararedirecionamento = servicoDeSindicos.agendarAssembleia(sindico, data, local, tema);
