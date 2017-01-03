@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.4.2.RELEASE'
+		springBootVersion = '1.4.3.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -30,11 +30,13 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web-services')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile('org.springframework.boot:spring-boot-devtools:1.4.2.RELEASE')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa:1.4.2.RELEASE')
 	compile('org.springframework.boot:spring-boot-sample-data-rest-archetype:1.0.2.RELEASE')
 	compile('org.projectlombok:lombok:1.16.12')
 	compile('com.h2database:h2:1.4.193')
 	compile('org.springframework.security:spring-security-core:4.2.0.RELEASE')
 	compile('junit:junit-dep:4.11')
+    compile('org.springframework.boot:spring-boot-starter')
+    runtime('org.springframework.boot:spring-boot-devtools')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
