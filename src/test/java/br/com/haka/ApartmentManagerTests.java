@@ -16,6 +16,7 @@ import br.com.haka.domain.service.ApartmentManagerService;
 @SpringBootTest
 public class ApartmentManagerTests {
 
+
     @Autowired
     private Users users;
 

@@ -7,6 +7,7 @@ package br.com.haka.domain.valueObject;
  */
 
 //TODO - Exclude this valueObject package and create the options in DB
+@Deprecated
 public enum BookableAreas {
-    CHURRASQUEIRA, PISCINA, SALAO_FESTA, SALA_JOGOS;
+    CHURRASQUEIRA, PISCINA, SALAO_FESTA, SALA_JOGOS
 }

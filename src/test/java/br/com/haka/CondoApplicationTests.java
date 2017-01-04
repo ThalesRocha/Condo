@@ -11,46 +11,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
-import java.util.Date;
+
 import java.util.Calendar;
+import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Rollback//coloco isso para que as transações sejam canceladas
+@Rollback//Used this for cancel transaction
 public class CondoApplicationTests {
 
     @Autowired
     private ApartmentManagerService apartmentManagerService;
 
 
-    private ApartmentManagerToken apartmentManager;
-
-
+    @Autowired
     private ApartmentManagerRegisterService createApartmentManager;
 
     @Autowired
     private Meetings meetings;
 
     @Test
-    public void testeDoRepositorio(){
+    public void testeDoRepositorio() {
         boolean b = meetings.create(null, null, null, null);
         Assert.assertNotNull(b);
         Assert.assertFalse(b);
     }
 
 
-	@Test
-	public void agendarAssembleia() {
-        apartmentManager = ApartmentManagerToken.createApartmentManager("usuario", "senha");
-//        createApartmentManager.create(apartmentManager, "test");
-        Assert.assertNotNull(apartmentManager);
-        //sindico -> agendar assembleias
+    @Test
+    public void bookaMeeting() {
+        ApartmentManagerToken apartmentManagerToken = ApartmentManagerToken.createApartmentManager("usuario", "senha");
+        createApartmentManager.create(apartmentManagerToken, "test");
+        Assert.assertNotNull(apartmentManagerToken);
+
+        //I'm as a apartment manager need booking a meeting
         String tema = "Tema para Teste APENAS!!";
         String local = "Rua das Camelias Azuis, 89765, Bairro Barro, Cidade do Estado";
         Date data = Calendar.getInstance().getTime(); //TODO fazer estudo sobre a diferença de date e calendar
-        Assert.assertNotNull(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
-       // Assert.assertTrue(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
-        Assert.assertFalse(apartmentManagerService.scheduleMeeting(apartmentManager, data, local, tema));
+        Assert.assertNotNull(apartmentManagerService.scheduleMeeting(apartmentManagerToken, data, local, tema));
+        Assert.assertTrue(apartmentManagerService.scheduleMeeting(apartmentManagerToken, data, local, tema));
+
 
         // Validação das Rotas
         //String pathPararedirecionamento = servicoDeSindicos.agendarAssembleia(sindico, data, local, tema);

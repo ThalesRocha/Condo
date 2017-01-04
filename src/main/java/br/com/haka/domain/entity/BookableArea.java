@@ -16,8 +16,8 @@ public class BookableArea {
 	private Integer capacity;
 	private boolean booked;
 
-	
-	
+
+
 	public String getName() {
 		return name;
 	}

@@ -26,9 +26,8 @@ public class ApartmentManagers {
 
 
     public ApartmentManager findByToken(ApartmentManagerToken apartmentManagerToken) {
-
         for (ApartmentManager apartmentManager : apartmentManagers){
-            if ( apartmentManager.equals(apartmentManagerToken)){
+            if ( apartmentManager.getToken().equals(apartmentManagerToken)){
                 return apartmentManager;
             }
 
