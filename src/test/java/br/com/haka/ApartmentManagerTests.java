@@ -1,10 +1,15 @@
 package br.com.haka;
 
+import br.com.haka.domain.entity.ApartmentManager;
+import br.com.haka.domain.entity.ApartmentManagerToken;
+import br.com.haka.domain.entity.BookableArea;
+import br.com.haka.domain.service.ApartmentManagerRegisterService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import br.com.haka.domain.entity.User;
 import br.com.haka.domain.repository.Users;
@@ -22,6 +27,9 @@ public class ApartmentManagerTests {
 
     @Autowired
     private ApartmentManagerService apartmentManagerService;
+
+    @Autowired
+    ApartmentManagerRegisterService managerRegisterService;
 
 
 
@@ -49,6 +57,13 @@ public class ApartmentManagerTests {
         //busco o usuario removido e ele nao pode ser encontrado
         user = users.findByLogin(user.getLogin());
         Assert.assertNull(user);
+    }
+
+    @Test
+    public void createBookableAreas(){
+        BookableArea bookableArea = apartmentManagerService.createBookableArea("Churrasqueira", 15);
+        Assert.assertNotNull(bookableArea);
+
     }
 
 

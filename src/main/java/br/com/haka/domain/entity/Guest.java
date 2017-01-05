@@ -3,6 +3,7 @@ package br.com.haka.domain.entity;
 /**
  * Created by hivisonmoura on 2017-01-03.
  */
+//TODO add date of visitation
 public class Guest {
     private String name;
     private int cpf;

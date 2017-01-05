@@ -16,11 +16,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by hivisonmoura on 2017-01-03.
+ * Created by hivisonmoura on 2017-01-05.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRegisterGuestTest {
+public class UserTests {
 
     @Autowired
     private ApartmentManagerService apartmentManagerService;
@@ -31,16 +31,19 @@ public class UserRegisterGuestTest {
     @Autowired
     private Guests guests;
 
+    @Autowired
+    private Date date = Calendar.getInstance().getTime();
+
     private Guest guest;
 
     private User user;
 
 
+
     @Test
-    public void testRegisterGuest(){
-        user = apartmentManagerService.createUser("hmoura", "123", "Test", true);
-        Date date = Calendar.getInstance().getTime();
-        guest = userRegisterService.registerGuest(user ,date,"Visitante", 123456);
+    public void testRegisterGuest() {
+        user = apartmentManagerService.createUser("IronMan", "Jarvis", "TonyStark", true);
+        guest = userRegisterService.registerGuest(user, date, "SpiderMan", 123456);
         Assert.assertNotNull(guest);
         Assert.assertTrue(guest.equals(guests.findByCpf(guest.getCpf())));
         Assert.assertFalse(guest.equals(guests.findByCpf(1234)));
@@ -48,4 +51,10 @@ public class UserRegisterGuestTest {
 
     }
 
+    @Test
+    public void testBookArea(){
+        user = apartmentManagerService.createUser("Three","Earth", "Groot", true);
+
+
+    }
 }

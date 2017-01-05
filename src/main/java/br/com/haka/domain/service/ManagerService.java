@@ -24,8 +24,8 @@ public class ManagerService {
     @Autowired
     private UserRegisterService userRegisterService;
 
-    @Autowired
-    private Users users;
+
+
 
     @Autowired
     UserLockerService userLockerService;

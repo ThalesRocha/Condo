@@ -2,6 +2,7 @@ package br.com.haka.domain.service;
 
 import br.com.haka.domain.entity.ApartmentManager;
 import br.com.haka.domain.entity.ApartmentManagerToken;
+import br.com.haka.domain.entity.BookableArea;
 import br.com.haka.domain.entity.User;
 import br.com.haka.domain.repository.ApartmentManagers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class ApartmentManagerService {
     @Autowired
     private UserLockerService userLockerService;
 
+    @Autowired
+    private BookableAreaCreatorService bookableAreaCreatorService;
+
 
     private User user;
 
@@ -59,5 +63,9 @@ public class ApartmentManagerService {
 
     public boolean unlockUser(User user) {
         return userLockerService.unlock(user.getLogin());
+    }
+
+    public BookableArea createBookableArea( String name, int capacity) {
+        return bookableAreaCreatorService.create(name, capacity);
     }
 }

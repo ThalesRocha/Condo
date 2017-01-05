@@ -16,7 +16,7 @@ import java.util.Date;
  */
 
 @Service
-public class UserBookService {
+public class UserValidateBookService {
 
 
     @Autowired

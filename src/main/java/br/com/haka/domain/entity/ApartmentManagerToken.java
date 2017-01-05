@@ -1,5 +1,7 @@
 package br.com.haka.domain.entity;
 
+import javax.persistence.Entity;
+
 /**
  * Created with IntelliJ IDEA.
  * <p/>
@@ -9,6 +11,7 @@ package br.com.haka.domain.entity;
  * <p/>
  * Responsabilidade:
  */
+
 public class ApartmentManagerToken {
     private String user;
     private String password;

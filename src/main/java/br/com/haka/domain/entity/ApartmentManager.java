@@ -3,6 +3,8 @@ package br.com.haka.domain.entity;
 import br.com.haka.domain.repository.ApartmentManagers;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Entity;
+
 /**
  * Created with IntelliJ IDEA.
  * <p/>

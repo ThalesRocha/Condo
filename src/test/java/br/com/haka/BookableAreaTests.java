@@ -3,7 +3,7 @@ package br.com.haka;
 import br.com.haka.domain.entity.User;
 import br.com.haka.domain.repository.Users;
 import br.com.haka.domain.service.ApartmentManagerService;
-import br.com.haka.domain.service.UserBookService;
+import br.com.haka.domain.service.UserValidateBookService;
 import br.com.haka.domain.valueObject.BookableAreas;
 import org.junit.Assert;
 import org.junit.Test;
@@ -35,7 +35,7 @@ public class BookableAreaTests {
         private BookableAreas bookableAreas;
 
         @Autowired
-        private UserBookService userBookService;
+        private UserValidateBookService userBookService;
 
 
     Date date = Calendar.getInstance().getTime();
