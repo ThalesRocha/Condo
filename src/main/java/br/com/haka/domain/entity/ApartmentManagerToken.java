@@ -1,6 +1,6 @@
 package br.com.haka.domain.entity;
 
-import javax.persistence.Entity;
+
 
 /**
  * Created with IntelliJ IDEA.
