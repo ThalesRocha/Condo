@@ -2,8 +2,7 @@ package br.com.haka.domain.service;
 
 import br.com.haka.domain.entity.BookableArea;
 import br.com.haka.domain.entity.User;
-import br.com.haka.domain.repository.Users;
-import br.com.haka.domain.valueObject.BookableAreas;
+import br.com.haka.domain.repository.ScheduleBookableAreas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +17,21 @@ import java.util.Date;
 @Service
 public class UserValidateBookService {
 
-
     @Autowired
-    private Users users;
-    @Deprecated
-    //TODO Create a real method of validate the book area
-    public Boolean bookArea(Date date, BookableAreas bookableArea, User user) {
-        if(user.getUnlocked())
-        return true;
-        else
-          return false;
+    private br.com.haka.domain.repository.BookableAreas bookableAreas;
+    @Autowired
+    private ScheduleBookableAreas scheduleBookableAreas;
+
+
+    public Boolean validadeBookArea(Date date, BookableArea bookableArea, User user) {
+        if (user.getUnlocked()) {
+            if (bookableAreas.findByName(bookableArea.getName()) != null) {
+                if (scheduleBookableAreas.findByAvailability(bookableArea, date) != null) {
+                    return true;
+                }
+            }
+        }
+        return false;
+
     }
 }

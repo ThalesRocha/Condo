@@ -17,7 +17,6 @@ public class BookableArea {
 
 	private String name;
 	private int capacity;
-	//private boolean booked;
 
     private BookableArea(String name, Integer capacity) {
         this.name = name;

@@ -16,7 +16,7 @@ public class Guests {
 
 
     public Guests() {
-        this.guests = new ArrayList<Guest>();
+        this.guests = new ArrayList<>();
     }
 
     public boolean add(Guest guest) {

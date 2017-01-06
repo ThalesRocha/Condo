@@ -40,7 +40,7 @@ public class UserRegisterService {
     }
 
     public Guest registerGuest(User user, Date date, String name, int cpf) {
-        Guest guest = Guest.createGuest(name, cpf, user);
+        Guest guest = Guest.createGuest(name, cpf, user, date);
         guests.add(guest);
         return guests.findByCpf(cpf);
     }

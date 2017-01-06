@@ -5,6 +5,7 @@ import br.com.haka.domain.entity.Guest;
 import br.com.haka.domain.entity.User;
 import br.com.haka.domain.service.ApartmentManagerService;
 import br.com.haka.domain.service.UserRegisterService;
+import lombok.Data;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -40,6 +41,8 @@ public class EntranceHallTests {
          */
         //User user = apartmentManagerService.createUser("smash","123", "Hulk", true);
         //guest = userRegisterService.registerGuest(user, date, "Teste",123);
+
+
 
     }
 
