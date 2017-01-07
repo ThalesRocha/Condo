@@ -50,7 +50,6 @@ public class UserTests {
     private User user;
 
 
-
     @Test
     public void testRegisterGuest() {
         user = apartmentManagerService.createUser("IronMan", "Jarvis", "TonyStark", true);
@@ -64,14 +63,34 @@ public class UserTests {
     }
 
     @Test
-    public void testBookArea() {
-        user = apartmentManagerService.createUser("Three","Earth", "Groot", true);
+    public void testBookArea() throws ParseException {
+
+        user = apartmentManagerService.createUser("Three", "Earth", "Groot", true);
         BookableArea bookableArea = apartmentManagerService.createBookableArea("Pool", 20);
 
+        //Try book and available area with a unlocked user
         ScheduleBookableArea scheduleBookableArea = userBookAreaService.bookAnArea(user, bookableArea, date);
         Assert.assertNotNull(scheduleBookableArea);
 
+        //Try book an area unavailable
+        ScheduleBookableArea scheduleBookableArea1 = userBookAreaService.bookAnArea(user, bookableArea, date);
+        Assert.assertNull(scheduleBookableArea1);
 
+        //Try book an available are with a locked user
+        user = apartmentManagerService.createUser("abc", "123", "Michael Jackson", false);
+        BookableArea bookableArea1 = apartmentManagerService.createBookableArea("Gym", 20);
+
+        ScheduleBookableArea scheduleBookableArea2 = userBookAreaService.bookAnArea(user, bookableArea1, date);
+        Assert.assertNull(scheduleBookableArea2);
+
+        //Try book an available area that already was booked with different date
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        String userInput = "15-01-2016";
+        Date date1 = formatter.parse(userInput);
+        apartmentManagerService.unlockUser(user);
+
+        ScheduleBookableArea scheduleBookableArea3 = userBookAreaService.bookAnArea(user, bookableArea1, date1);
+        Assert.assertNotNull(scheduleBookableArea3);
 
     }
 }

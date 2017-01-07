@@ -7,9 +7,6 @@ import br.com.haka.domain.repository.ScheduleBookableAreas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -32,22 +29,15 @@ public class UserBookAreaService {
     /*
      * Create by hard code a schedule book area for test proposes only
      */
-        try {
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-            String userInput = "15-01-2016";
-            Date date1 = formatter.parse(userInput);
-            ScheduleBookableArea scheduleBookableArea1 = ScheduleBookableArea.scheduleAnBookArea(user,bookableArea,date1);
-            scheduleBookableAreas.add(scheduleBookableArea1);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    /*
 
 
+*/
 
-        if(userValidateBookService.validadeBookArea(date,bookableArea,user)){
+        if(userValidateBookService.validateBookArea(date,bookableArea,user)){
             ScheduleBookableArea scheduleBookableArea = ScheduleBookableArea.scheduleAnBookArea(user,bookableArea,date);
             scheduleBookableAreas.add(scheduleBookableArea);
-            return scheduleBookableAreas.findByAvailability(bookableArea,date);
+            return scheduleBookableAreas.findByName(bookableArea,date);
         }
         return null;
     }

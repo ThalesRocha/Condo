@@ -16,6 +16,7 @@ public class ScheduleBookableAreas {
 
     private static List<ScheduleBookableArea> scheduleBookableAreas;
 
+
     public ScheduleBookableAreas() {
         this.scheduleBookableAreas = new ArrayList<>();
     }
@@ -23,6 +24,8 @@ public class ScheduleBookableAreas {
     public boolean add(ScheduleBookableArea scheduleBookableArea) {
         return this.scheduleBookableAreas.add(scheduleBookableArea);
     }
+
+
 
     public ScheduleBookableArea findByAvailability(BookableArea bookableArea, Date date) {
         if (bookableArea != null && date != null) {
@@ -39,5 +42,20 @@ public class ScheduleBookableAreas {
         }
 
         return null;
+    }
+
+    public int size() {
+        return scheduleBookableAreas.size();
+    }
+    //TODO rename
+    public ScheduleBookableArea findByName(BookableArea bookableArea, Date date) {
+        if(bookableArea != null && date != null ){
+            for(ScheduleBookableArea scheduleBookableArea : this.scheduleBookableAreas){
+                if(scheduleBookableArea.getBookableArea().equals(bookableArea) &&
+                        scheduleBookableArea.getDate().equals(date))
+                    return scheduleBookableArea;
+            }
+        }
+        return  null;
     }
 }

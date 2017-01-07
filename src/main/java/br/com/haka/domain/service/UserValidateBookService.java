@@ -23,15 +23,18 @@ public class UserValidateBookService {
     private ScheduleBookableAreas scheduleBookableAreas;
 
 
-    public Boolean validadeBookArea(Date date, BookableArea bookableArea, User user) {
+    public Boolean validateBookArea(Date date, BookableArea bookableArea, User user) {
         if (user.getUnlocked()) {
-            if (bookableAreas.findByName(bookableArea.getName()) != null) {
-                if (scheduleBookableAreas.findByAvailability(bookableArea, date) != null) {
-                    return true;
+            if(scheduleBookableAreas.size() == 0){
+                return true;
+            }else{
+                if (bookableAreas.findByName(bookableArea.getName()) != null) {
+                    if (scheduleBookableAreas.findByAvailability(bookableArea, date) != null)
+                        return true;
                 }
             }
+
         }
         return false;
-
     }
 }
