@@ -7,18 +7,18 @@ import java.util.Date;
  */
 public class Guest {
     private String name;
-    private int cpf;
+    private String rg;
     private User user;
     private Date date;
 
-    public Guest(String name, int cpf, User user, Date date) {
+    public Guest(String name, String rg, User user, Date date) {
         this.name = name;
-        this.cpf = cpf;
+        this.rg = rg;
         this.user = user;
         this.date = date;
     }
 
-    public static Guest createGuest(String  name, int cpf, User user, Date date) {
+    public static Guest createGuest(String  name, String cpf, User user, Date date) {
         return new Guest(name, cpf, user, date);
     }
 
@@ -30,12 +30,12 @@ public class Guest {
         this.name = name;
     }
 
-    public int getCpf() {
-        return cpf;
+    public String getRg() {
+        return rg;
     }
 
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
+    public void setRg(String cpf) {
+        this.rg = cpf;
     }
 
     public User getUser() {

@@ -4,10 +4,15 @@ import br.com.haka.domain.entity.ApartmentManager;
 import br.com.haka.domain.entity.Guest;
 import br.com.haka.domain.entity.User;
 import br.com.haka.domain.service.ApartmentManagerService;
+import br.com.haka.domain.service.EntranceHallService;
 import br.com.haka.domain.service.UserRegisterService;
 import lombok.Data;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import ObjectValue.Constants;
+
+import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,27 +28,25 @@ public class EntranceHallTests {
     @Autowired
     private Guest guest;
 
-
-
     @Autowired
     private ApartmentManagerService apartmentManagerService;
+    
+    @Autowired
+    private EntranceHallService entranceHallService;
 
-
-
+	Date guestDate = Calendar.getInstance().getTime();
+	Date entryDate = Calendar.getInstance().getTime();
+	Date exitDate;
+	String guestName = Constants.GUEST_NAME;
+	String guestRG = Constants.GUEST_RG;
 
     @Test //Eu como portaria devo ser capaz de registrar entrada e saída de visitantes
-    public void registerEntryExitGuest(){
-        //TODO finalize task
+    public void test_registerEntryGuest(){
 
-        /*
-         * For register a guest the system need first have an user already registered, because a guest is always associated
-         * to an user.
-         */
-        //User user = apartmentManagerService.createUser("smash","123", "Hulk", true);
-        //guest = userRegisterService.registerGuest(user, date, "Teste",123);
-
-
-
+        User apartmentOwner = apartmentManagerService.createUser("smash","123", "Hulk", true);
+        guest = userRegisterService.registerGuest(apartmentOwner, guestDate, "Test", guestRG);
+        
+        assertTrue(entranceHallService.registerGuestEntry(apartmentOwner, guestName, guestRG, entryDate));
     }
 
 

@@ -53,10 +53,10 @@ public class UserTests {
     @Test
     public void testRegisterGuest() {
         user = apartmentManagerService.createUser("IronMan", "Jarvis", "TonyStark", true);
-        guest = userRegisterService.registerGuest(user, date, "SpiderMan", 123456);
+        guest = userRegisterService.registerGuest(user, date, "SpiderMan", "123456");
         Assert.assertNotNull(guest);
-        Assert.assertTrue(guest.equals(guests.findByCpf(guest.getCpf())));
-        Assert.assertFalse(guest.equals(guests.findByCpf(1234)));
+        Assert.assertTrue(guest.equals(guests.findByRG(guest.getRg())));
+        Assert.assertFalse(guest.equals(guests.findByRG("1234")));
         System.out.println(guest.getDate());
 
 

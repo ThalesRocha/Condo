@@ -23,10 +23,10 @@ public class Guests {
         return this.guests.add(guest);
     }
 
-    public Guest findByCpf(int cpf) {
-        if(cpf != 0) {
+    public Guest findByRG(String rg) {
+        if(rg.isEmpty()) {
             for (Guest guest : this.guests){
-                if(guest.getCpf() == (cpf))
+                if(guest.getRg().equals(rg))
                     return guest;
             }
         }

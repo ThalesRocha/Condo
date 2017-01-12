@@ -39,9 +39,9 @@ public class UserRegisterService {
         return users.findByLogin(login);
     }
 
-    public Guest registerGuest(User user, Date date, String name, int cpf) {
-        Guest guest = Guest.createGuest(name, cpf, user, date);
+    public Guest registerGuest(User user, Date date, String name, String rg) {
+        Guest guest = Guest.createGuest(name, rg, user, date);
         guests.add(guest);
-        return guests.findByCpf(cpf);
+        return guests.findByRG(rg);
     }
 }
